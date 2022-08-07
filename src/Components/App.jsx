@@ -1,7 +1,4 @@
-import FunctionalProgramming from "./FunctionalProgramming";
-//import JavascriptForReact from "./JavascriptForReact";
-
 const App = () => {
-  return <FunctionalProgramming />;
+  return "Hello World";
 };
 export default App;
