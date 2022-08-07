@@ -1,16 +1,9 @@
-import MenuList from "./PropsExercise/Menu/MenuList";
-import { useEffect, useState } from "react";
-import { data } from "../data/data";
+import StarRating from "./State/StarRating";
 
 const App = () => {
-  const [dataMenu, setDataMenu] = useState([]);
-  useEffect(() => {
-    setDataMenu(data);
-  }, [data]);
   return (
     <>
-      <h1>Menu</h1>
-      <MenuList data={dataMenu} />
+      <StarRating style={{ backgroundColor: "lightblue" }} />
     </>
   );
 };
