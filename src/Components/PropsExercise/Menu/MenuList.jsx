@@ -1,21 +1,11 @@
-import { useEffect, useState } from "react";
-import { data } from "../../../data/data";
 import Ingredients from "./Ingredients";
 
-const MenuList = () => {
-  const [dataMenu, setDataMenu] = useState([]);
-
-  useEffect(() => {
-    setDataMenu(data);
-  }, [data]);
-
-  console.log(dataMenu);
-
+const MenuList = ({ data }) => {
+  console.log(data);
   return (
     <>
-      {" "}
       <h1>MenuList</h1>
-      {dataMenu.map((food) => (
+      {data.map((food) => (
         <Ingredients
           key={food.name}
           name={food.name}
