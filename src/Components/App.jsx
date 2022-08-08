@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { colorData } from "../data/color-data";
+import AddColorForm from "./Forms/AddColorForm";
 import ColorList from "./State/ColorList";
-import StarRating from "./State/StarRating";
 
 const App = () => {
   const [colors, setColors] = useState(colorData);
@@ -20,6 +20,7 @@ const App = () => {
           setColors(newColors);
         }}
       />
+      <AddColorForm />
     </>
   );
 };
