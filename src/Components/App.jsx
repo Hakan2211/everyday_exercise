@@ -1,11 +1,14 @@
+import Checkbox from "./Built-In-Hooks/useEffect/Checkbox";
+import Phrase from "./Built-In-Hooks/useEffect/Phrase";
 import AddColorForm from "./Forms/AddColorForm";
-import ColorList from "./State/ColorList";
 
 const App = () => {
   return (
     <>
-      <AddColorForm />
+      {/* <AddColorForm />
       <ColorList />
+      <Phrase /> */}
+      <Checkbox />
     </>
   );
 };
