@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { colorData } from "../data/color-data";
 import AddColorForm from "./Forms/AddColorForm";
+import NewForm from "./Forms/NewForm";
 import ColorList from "./State/ColorList";
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         }}
       />
       <AddColorForm />
+      <NewForm />
     </>
   );
 };
