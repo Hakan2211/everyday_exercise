@@ -23,6 +23,7 @@ const App = () => {
       />
       <AddColorForm /> */}
       <NewForm />
+      <h1>Hello</h1>
     </>
   );
 };
