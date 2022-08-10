@@ -1,22 +1,15 @@
 import { useState } from "react";
 import { useLoginFormValidator } from "./hooks/useLoginFormValidator";
+import styles from "./LoginForm.module.css";
+import clsx from "clsx";
 
-const NewForm = () => {
+const NewForm = (props) => {
   const [form, setForm] = useState({
     email: "",
     password: "",
     confirmPassword: "",
   });
-
   const { errors, validateForm, onBlurField } = useLoginFormValidator(form);
-
-  const onSubmitForm = (e) => {
-    e.preventDefault();
-    const { isValid } = validateForm({ form, errors, forceTouchErrors: true });
-    if (!isValid) return;
-    alert(JSON.stringify(form, null, 2));
-  };
-
   const onUpdateField = (e) => {
     const field = e.target.name;
     const nextFormState = {
@@ -31,42 +24,85 @@ const NewForm = () => {
         field,
       });
   };
+
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+    const { isValid } = validateForm({ form, errors, forceTouchErrors: true });
+    if (!isValid) return;
+    alert(JSON.stringify(form, null, 2));
+  };
+
   return (
-    <form onSubmit={onSubmitForm}>
-      <div>
-        <label>Email</label>
+    <form className={styles.form} onSubmit={onSubmitForm}>
+      <div className={styles.formGroup}>
+        <label className={styles.formLabel}>Email</label>
         <input
+          className={clsx(
+            styles.formField,
+            errors.email.dirty && errors.email.error && styles.formFieldError
+          )}
           type="text"
-          aria-label="Email"
+          aria-label="Email field"
           name="email"
           value={form.email}
           onChange={onUpdateField}
+          onBlur={onBlurField}
         />
+        {errors.email.dirty && errors.email.error ? (
+          <p className={styles.formFieldErrorMessage}>{errors.email.message}</p>
+        ) : null}
       </div>
-      <div>
-        <label>Password</label>
+      <div className={styles.formGroup}>
+        <label className={styles.formLabel}>Password</label>
         <input
+          className={clsx(
+            styles.formField,
+            errors.password.dirty &&
+              errors.password.error &&
+              styles.formFieldError
+          )}
           type="password"
-          aria-label="Password Field"
+          aria-label="Password field"
           name="password"
           value={form.password}
           onChange={onUpdateField}
+          onBlur={onBlurField}
         />
+        {errors.password.dirty && errors.password.error ? (
+          <p className={styles.formFieldErrorMessage}>
+            {errors.password.message}
+          </p>
+        ) : null}
       </div>
-      <div>
-        <label>Confirm Password</label>
+      <div className={styles.formGroup}>
+        <label className={styles.formLabel}>Confirm Password</label>
         <input
+          className={clsx(
+            styles.formField,
+            errors.confirmPassword.dirty &&
+              errors.confirmPassword.error &&
+              styles.formFieldError
+          )}
           type="password"
           aria-label="Confirm password field"
           name="confirmPassword"
           value={form.confirmPassword}
           onChange={onUpdateField}
+          onBlur={onBlurField}
         />
+        {errors.confirmPassword.dirty && errors.confirmPassword.error ? (
+          <p className={styles.formFieldErrorMessage}>
+            {errors.confirmPassword.message}
+          </p>
+        ) : null}
       </div>
-      <div>
-        <button type="submit">Login</button>
+      <div className={styles.formActions}>
+        <button className={styles.formSubmitBtn} type="submit">
+          Login
+        </button>
       </div>
     </form>
   );
 };
+
 export default NewForm;

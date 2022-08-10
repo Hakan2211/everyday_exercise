@@ -8,7 +8,7 @@ const App = () => {
   const [colors, setColors] = useState(colorData);
   return (
     <>
-      <ColorList
+      {/* <ColorList
         colors={colors}
         onRateColor={(id, rating) => {
           const newColors = colors.map((color) =>
@@ -21,7 +21,7 @@ const App = () => {
           setColors(newColors);
         }}
       />
-      <AddColorForm />
+      <AddColorForm /> */}
       <NewForm />
     </>
   );

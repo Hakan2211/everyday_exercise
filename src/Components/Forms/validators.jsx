@@ -13,7 +13,6 @@ export const passwordValidator = (password) => {
   } else if (password.length < 8) {
     return "Password must have a minimum 8 characters";
   }
-
   return "";
 };
 
@@ -21,8 +20,9 @@ export const confirmPasswordValidator = (confirmPassword, form) => {
   if (!confirmPassword) {
     return "Confirm password is required";
   } else if (confirmPassword.length < 8) {
-    return "Confirm Password must have a minimum 8 characters";
+    return "Confirm password must have a minimum 8 characters";
   } else if (confirmPassword !== form.password) {
-    return " Passwords do not match";
+    return "Passwords do not match";
   }
+  return "";
 };
